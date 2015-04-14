@@ -81,7 +81,6 @@ class MainView {
 //        momentoLabel.sizeToFit()
 //        
 //        return momentoLabel
-//  mas comentarios
 //    }
 
     func constructDictionaries() {
