@@ -13,10 +13,10 @@ class MainView {
     var view: UIView
     var heightConstraint: CGFloat
     var superView: UIView
-    var metrics: Dictionary<String, AnyObject> = {}()
-    var viewsDict: Dictionary<String, AnyObject> = {}()
-    var consDictionary: Dictionary<String, String> = {}()
-    var labelConsDictionary: Dictionary<String, String> = {}()
+    var metrics: Dictionary<String, AnyObject> = [String: AnyObject]()
+    var viewsDict: Dictionary<String, AnyObject> = [String: AnyObject]()
+    var consDictionary: Dictionary<String, String> = [String: String]()
+    var labelConsDictionary: Dictionary<String, String> = [String: String]()
     var visualFormatHMain: Array<AnyObject> = []
     var visualFormatVMain: Array<AnyObject> = []
     var visualFormatMainHeight: Array<AnyObject> = []
@@ -71,17 +71,6 @@ class MainView {
         
         constructDictionaries()
 }
-    
-//    func configureLabel(name: String, size: CGFloat, align: NSTextAlignment) {
-//        let momentoLabel = UILabel()
-//        momentoLabel.attributedText = NSAttributedString()
-//        momentoLabel.font = UIFont(name: name, size: size)
-//        momentoLabel.textAlignment = align
-//        momentoLabel.textColor = UIColor.lightTextColor()
-//        momentoLabel.sizeToFit()
-//        
-//        return momentoLabel
-//    }
 
     func constructDictionaries() {
         //BUG you have to add to dictionary each object like this 
