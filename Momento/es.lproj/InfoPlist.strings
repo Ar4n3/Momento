@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Momento
+
+  Created by Enara Lopez Otaegi on 24/11/14.
+  Copyright (c) 2014 Enara Lopez Otaegi. All rights reserved.
+*/
+"NSLocationWhenInUseUsageDescription" = "Momento necesita tu localización para mostrar una información más precisa";
+"NSLocationUsageDescription" = "Momento necesita tu localización para mostrar una información más precisa";
+"NSLocationAlwaysUsageDescription" = "Momento necesita tu localización para mostrar una información más precisa";

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Thin.ttf">
+            <string>Roboto-Thin</string>
+            <string>Roboto-Thin</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Momento" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwc-uG-VBT">
+                    <rect key="frame" x="168" y="216" width="145" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="145" id="Lnn-Pl-nTN"/>
+                        <constraint firstAttribute="height" constant="48" id="SMR-mP-uIj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="34"/>
+                    <color key="textColor" red="0.34544764" green="0.67096560849999998" blue="0.019929671539999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Domo Arigato, Mr. Roboto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUN-Ox-IRs">
+                    <rect key="frame" x="0.0" y="398" width="480" height="63"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="HxM-6S-RpS"/>
+                        <constraint firstAttribute="width" constant="480" id="uab-UY-j7k"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="10"/>
+                    <color key="textColor" red="0.34544764" green="0.67096560849999998" blue="0.019929671539999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.53275976049999996" green="0.79253472219999999" blue="0.54873621299999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="KUN-Ox-IRs" secondAttribute="trailing" id="EkT-mI-MoI"/>
+                <constraint firstAttribute="centerY" secondItem="hwc-uG-VBT" secondAttribute="centerY" id="Lli-EV-Bgh"/>
+                <constraint firstAttribute="bottom" secondItem="KUN-Ox-IRs" secondAttribute="bottom" constant="19" id="N55-ZY-9mb"/>
+                <constraint firstAttribute="centerX" secondItem="hwc-uG-VBT" secondAttribute="centerX" constant="-0.5" id="gdL-sn-Sy9"/>
+                <constraint firstItem="KUN-Ox-IRs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n3L-gj-RFX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="548" y="455"/>
+        </view>
+    </objects>
+</document>

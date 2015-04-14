@@ -1,0 +1,516 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B35594761A23B6AD0066B8DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B35594781A23B6AD0066B8DC /* InfoPlist.strings */; };
+		B355947C1A23CA2B0066B8DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B355947E1A23CA2C0066B8DC /* Localizable.strings */; };
+		B38240991A9563A200F677D3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38240981A9563A200F677D3 /* MainView.swift */; };
+		B382409B1A9563C300F677D3 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382409A1A9563C300F677D3 /* ColorWheel.swift */; };
+		B382409D1A9563CB00F677D3 /* Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382409C1A9563CB00F677D3 /* Current.swift */; };
+		B397D0851A222BC600D8869D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B397D0841A222BC600D8869D /* CoreLocation.framework */; };
+		B397D0871A22318000D8869D /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B397D0861A22317C00D8869D /* Location.gpx */; };
+		B39937F41ADD88D100E4B96C /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39937F31ADD88D100E4B96C /* DateTime.swift */; };
+		B39937F61ADD919900E4B96C /* MomentoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39937F51ADD919900E4B96C /* MomentoLabel.swift */; };
+		B3A851371A20C6920061B371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A851361A20C6920061B371 /* AppDelegate.swift */; };
+		B3A8513A1A20C6920061B371 /* Momento.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3A851381A20C6920061B371 /* Momento.xcdatamodeld */; };
+		B3A8513C1A20C6920061B371 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8513B1A20C6920061B371 /* ViewController.swift */; };
+		B3A8513F1A20C6920061B371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A8513D1A20C6920061B371 /* Main.storyboard */; };
+		B3A851411A20C6920061B371 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3A851401A20C6920061B371 /* Images.xcassets */; };
+		B3A851441A20C6920061B371 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A851421A20C6920061B371 /* LaunchScreen.xib */; };
+		B3A851501A20C6920061B371 /* MomentoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8514F1A20C6920061B371 /* MomentoTests.swift */; };
+		B3A8515D1A20C7670061B371 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3A8515A1A20C7670061B371 /* Roboto-Thin.ttf */; };
+		B3A8515E1A20C7670061B371 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = B3A8515B1A20C7670061B371 /* test.json */; };
+		B3A851661A20D05B0061B371 /* WeatherDataToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A851651A20D05A0061B371 /* WeatherDataToday.swift */; };
+		B3D045B21A32384300688F22 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3D045B11A32384300688F22 /* icomoon.ttf */; };
+		B3D70D6F1A24D9320087508A /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D70D6E1A24D9320087508A /* Weather.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3A8514A1A20C6920061B371 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3A851291A20C6920061B371 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3A851301A20C6920061B371;
+			remoteInfo = Momento;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B35594771A23B6AD0066B8DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B35594791A23B6C30066B8DC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B35594801A23D2370066B8DC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B35594811A23D2CC0066B8DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B38240981A9563A200F677D3 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B382409A1A9563C300F677D3 /* ColorWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
+		B382409C1A9563CB00F677D3 /* Current.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; };
+		B397D0841A222BC600D8869D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B397D0861A22317C00D8869D /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		B39937F31ADD88D100E4B96C /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		B39937F51ADD919900E4B96C /* MomentoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentoLabel.swift; sourceTree = "<group>"; };
+		B3A13FDB1A238ACA0012AFF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		B3A851311A20C6920061B371 /* Momento.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Momento.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3A851361A20C6920061B371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B3A851391A20C6920061B371 /* Momento.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Momento.xcdatamodel; sourceTree = "<group>"; };
+		B3A8513B1A20C6920061B371 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3A8513E1A20C6920061B371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3A851401A20C6920061B371 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B3A851431A20C6920061B371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B3A851491A20C6920061B371 /* MomentoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomentoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3A8514F1A20C6920061B371 /* MomentoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentoTests.swift; sourceTree = "<group>"; };
+		B3A8515A1A20C7670061B371 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		B3A8515B1A20C7670061B371 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		B3A851651A20D05A0061B371 /* WeatherDataToday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDataToday.swift; sourceTree = "<group>"; };
+		B3D045B11A32384300688F22 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
+		B3D70D6E1A24D9320087508A /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3A8512E1A20C6920061B371 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B397D0851A222BC600D8869D /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3A851461A20C6920061B371 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B3A851281A20C6920061B371 = {
+			isa = PBXGroup;
+			children = (
+				B397D0861A22317C00D8869D /* Location.gpx */,
+				B3D045B11A32384300688F22 /* icomoon.ttf */,
+				B3A8515A1A20C7670061B371 /* Roboto-Thin.ttf */,
+				B3A8515B1A20C7670061B371 /* test.json */,
+				B3A851331A20C6920061B371 /* Momento */,
+				B3A8514C1A20C6920061B371 /* MomentoTests */,
+				B3A851321A20C6920061B371 /* Products */,
+				B397D0841A222BC600D8869D /* CoreLocation.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		B3A851321A20C6920061B371 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3A851311A20C6920061B371 /* Momento.app */,
+				B3A851491A20C6920061B371 /* MomentoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3A851331A20C6920061B371 /* Momento */ = {
+			isa = PBXGroup;
+			children = (
+				B3A851361A20C6920061B371 /* AppDelegate.swift */,
+				B38240981A9563A200F677D3 /* MainView.swift */,
+				B39937F31ADD88D100E4B96C /* DateTime.swift */,
+				B39937F51ADD919900E4B96C /* MomentoLabel.swift */,
+				B3A8513B1A20C6920061B371 /* ViewController.swift */,
+				B3D70D6E1A24D9320087508A /* Weather.swift */,
+				B382409A1A9563C300F677D3 /* ColorWheel.swift */,
+				B382409C1A9563CB00F677D3 /* Current.swift */,
+				B3A851651A20D05A0061B371 /* WeatherDataToday.swift */,
+				B3A8513D1A20C6920061B371 /* Main.storyboard */,
+				B3A851401A20C6920061B371 /* Images.xcassets */,
+				B3A851421A20C6920061B371 /* LaunchScreen.xib */,
+				B3A851381A20C6920061B371 /* Momento.xcdatamodeld */,
+				B3A851341A20C6920061B371 /* Supporting Files */,
+			);
+			path = Momento;
+			sourceTree = "<group>";
+		};
+		B3A851341A20C6920061B371 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B35594781A23B6AD0066B8DC /* InfoPlist.strings */,
+				B3A13FDC1A238ACA0012AFF5 /* Info.plist */,
+				B355947E1A23CA2C0066B8DC /* Localizable.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3A8514C1A20C6920061B371 /* MomentoTests */ = {
+			isa = PBXGroup;
+			children = (
+				B3A8514F1A20C6920061B371 /* MomentoTests.swift */,
+			);
+			path = MomentoTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3A851301A20C6920061B371 /* Momento */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3A851531A20C6920061B371 /* Build configuration list for PBXNativeTarget "Momento" */;
+			buildPhases = (
+				B3A8512D1A20C6920061B371 /* Sources */,
+				B3A8512E1A20C6920061B371 /* Frameworks */,
+				B3A8512F1A20C6920061B371 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Momento;
+			productName = Momento;
+			productReference = B3A851311A20C6920061B371 /* Momento.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B3A851481A20C6920061B371 /* MomentoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3A851561A20C6920061B371 /* Build configuration list for PBXNativeTarget "MomentoTests" */;
+			buildPhases = (
+				B3A851451A20C6920061B371 /* Sources */,
+				B3A851461A20C6920061B371 /* Frameworks */,
+				B3A851471A20C6920061B371 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3A8514B1A20C6920061B371 /* PBXTargetDependency */,
+			);
+			name = MomentoTests;
+			productName = MomentoTests;
+			productReference = B3A851491A20C6920061B371 /* MomentoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3A851291A20C6920061B371 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Enara Lopez Otaegi";
+				TargetAttributes = {
+					B3A851301A20C6920061B371 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					B3A851481A20C6920061B371 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = B3A851301A20C6920061B371;
+					};
+				};
+			};
+			buildConfigurationList = B3A8512C1A20C6920061B371 /* Build configuration list for PBXProject "Momento" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				es,
+			);
+			mainGroup = B3A851281A20C6920061B371;
+			productRefGroup = B3A851321A20C6920061B371 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3A851301A20C6920061B371 /* Momento */,
+				B3A851481A20C6920061B371 /* MomentoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3A8512F1A20C6920061B371 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3A8513F1A20C6920061B371 /* Main.storyboard in Resources */,
+				B35594761A23B6AD0066B8DC /* InfoPlist.strings in Resources */,
+				B397D0871A22318000D8869D /* Location.gpx in Resources */,
+				B3D045B21A32384300688F22 /* icomoon.ttf in Resources */,
+				B3A851441A20C6920061B371 /* LaunchScreen.xib in Resources */,
+				B3A851411A20C6920061B371 /* Images.xcassets in Resources */,
+				B3A8515D1A20C7670061B371 /* Roboto-Thin.ttf in Resources */,
+				B3A8515E1A20C7670061B371 /* test.json in Resources */,
+				B355947C1A23CA2B0066B8DC /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3A851471A20C6920061B371 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3A8512D1A20C6920061B371 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B382409D1A9563CB00F677D3 /* Current.swift in Sources */,
+				B3A8513C1A20C6920061B371 /* ViewController.swift in Sources */,
+				B38240991A9563A200F677D3 /* MainView.swift in Sources */,
+				B382409B1A9563C300F677D3 /* ColorWheel.swift in Sources */,
+				B3D70D6F1A24D9320087508A /* Weather.swift in Sources */,
+				B3A851661A20D05B0061B371 /* WeatherDataToday.swift in Sources */,
+				B39937F61ADD919900E4B96C /* MomentoLabel.swift in Sources */,
+				B3A851371A20C6920061B371 /* AppDelegate.swift in Sources */,
+				B39937F41ADD88D100E4B96C /* DateTime.swift in Sources */,
+				B3A8513A1A20C6920061B371 /* Momento.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3A851451A20C6920061B371 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3A851501A20C6920061B371 /* MomentoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3A8514B1A20C6920061B371 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3A851301A20C6920061B371 /* Momento */;
+			targetProxy = B3A8514A1A20C6920061B371 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B35594781A23B6AD0066B8DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B35594771A23B6AD0066B8DC /* Base */,
+				B35594791A23B6C30066B8DC /* es */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B355947E1A23CA2C0066B8DC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B35594801A23D2370066B8DC /* es */,
+				B35594811A23D2CC0066B8DC /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		B3A13FDC1A238ACA0012AFF5 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3A13FDB1A238ACA0012AFF5 /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
+		B3A8513D1A20C6920061B371 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3A8513E1A20C6920061B371 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B3A851421A20C6920061B371 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3A851431A20C6920061B371 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B3A851511A20C6920061B371 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B3A851521A20C6920061B371 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3A851541A20C6920061B371 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/Momento/Base.lproj/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B3A851551A20C6920061B371 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/Momento/Base.lproj/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B3A851571A20C6920061B371 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MomentoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Momento.app/Momento";
+			};
+			name = Debug;
+		};
+		B3A851581A20C6920061B371 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MomentoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Momento.app/Momento";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3A8512C1A20C6920061B371 /* Build configuration list for PBXProject "Momento" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3A851511A20C6920061B371 /* Debug */,
+				B3A851521A20C6920061B371 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3A851531A20C6920061B371 /* Build configuration list for PBXNativeTarget "Momento" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3A851541A20C6920061B371 /* Debug */,
+				B3A851551A20C6920061B371 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3A851561A20C6920061B371 /* Build configuration list for PBXNativeTarget "MomentoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3A851571A20C6920061B371 /* Debug */,
+				B3A851581A20C6920061B371 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B3A851381A20C6920061B371 /* Momento.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B3A851391A20C6920061B371 /* Momento.xcdatamodel */,
+			);
+			currentVersion = B3A851391A20C6920061B371 /* Momento.xcdatamodel */;
+			path = Momento.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B3A851291A20C6920061B371 /* Project object */;
+}
