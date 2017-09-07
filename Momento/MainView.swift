@@ -43,31 +43,29 @@ class MainView {
     init(view: UIView, height: CGFloat) {
         self.view = view
         self.superView = self.view.superview!
-        self.view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.setNeedsUpdateConstraints()
         self.heightConstraint = height
         constructViews()
     }
 
     func constructViews() {
-        self.locationLabel.initWithName("locationLabel")
-        self.iconLabel.initWithName("iconLabel")
-        self.tempLabel.initWithName("tempLabel")
-        self.humidityLabel.initWithName("humidityLabel")
-        self.humidityIconLabel.initWithName("humidityIconLabel")
-        self.precProbLabel.initWithName("precProbLabel")
-        self.precProbIconLabel.initWithName("precProbIconLabel")
-        self.summaryLabel.initWithName("summaryLabel")
-        self.windSpeedLabel.initWithName("windSpeedLabel")
-        self.windSpeedIconLabel.initWithName("windSpeedIconLabel")
-        self.precipIntensityLabel.initWithName("precipIntensityLabel")
-        self.precipIntensityIconLabel.initWithName("precipIntensityIconLabel")
-        self.sunriseTimeLabel.initWithName("sunriseTimeLabel")
-        self.sunriseTimeIconLabel.initWithName("sunriseTimeIconLabel")
-        self.sunsetTimeLabel.initWithName("sunsetTimeLabel")
-        self.sunsetTimeIconLabel.initWithName("sunsetTimeIconLabel")
-        self.dateLabel.initWithName("dateLabel")
-        self.poweredBy.initWithName("poweredBy")
+        self.locationLabel = MomentoLabel().initWithName("locationLabel")
+        self.iconLabel = MomentoLabel().initWithName("iconLabel")
+        self.tempLabel = MomentoLabel().initWithName("tempLabel")
+        self.humidityLabel = MomentoLabel().initWithName("humidityLabel")
+        self.humidityIconLabel = MomentoLabel().initWithName("humidityIconLabel")
+        self.precProbLabel = MomentoLabel().initWithName("precProbLabel")
+        self.precProbIconLabel = MomentoLabel().initWithName("precProbIconLabel")
+        self.summaryLabel = MomentoLabel().initWithName("summaryLabel")
+        self.windSpeedLabel = MomentoLabel().initWithName("windSpeedLabel")
+        self.windSpeedIconLabel = MomentoLabel().initWithName("windSpeedIconLabel")
+        self.precipIntensityLabel = MomentoLabel().initWithName("precipIntensityLabel")
+        self.precipIntensityIconLabel = MomentoLabel().initWithName("precipIntensityIconLabel")
+        self.sunriseTimeLabel = MomentoLabel().initWithName("sunriseTimeLabel")
+        self.sunriseTimeIconLabel = MomentoLabel().initWithName("sunriseTimeIconLabel")
+        self.sunsetTimeLabel = MomentoLabel().initWithName("sunsetTimeLabel")
+        self.sunsetTimeIconLabel = MomentoLabel().initWithName("sunsetTimeIconLabel")
+        self.dateLabel = MomentoLabel().initWithName("dateLabel")
+        self.poweredBy = MomentoLabel().initWithName("poweredBy")
         
         constructDictionaries()
 }
@@ -81,15 +79,16 @@ class MainView {
         self.consDictionary["visualFormatMainHeight"] = "V:[mainView(mainViewHeight)]"
 
         self.labelConsDictionary["visualFormatHLocationLabel"] = "H:|-10-[locationLabel]-10-|"
-        self.labelConsDictionary["visualFormatVLocationLabel"] = "V:[locationLabel]-30-[iconLabel]"
-        self.labelConsDictionary["visualFormatHTempLabel"] = "H:[iconLabel]-hSpacing-[tempLabel]"
+        self.labelConsDictionary["visualFormatVLocationLabel"] = "V:|-10-[locationLabel]-30-[iconLabel]"
+        self.labelConsDictionary["visualFormatHIconLabel"] = "V:|-10-[locationLabel]-30-[tempLabel]"
+        self.labelConsDictionary["visualFormatHTempLabel"] = "H:|-10-[iconLabel]-hSpacing-[tempLabel]-10-|"
         self.labelConsDictionary["visualFormatVTempLabel"] = "V:[tempLabel]-vSpacing-[hourPicker]"
         self.labelConsDictionary["visualFormatTempLabelWidth"] = "H:[tempLabel(iconLabelWidth)]"
-        self.labelConsDictionary["visualFormatHIconLabel"] = "H:[iconLabel]-hSpacing-[tempLabel]"
         self.labelConsDictionary["visualFormatVIconLabel"] = "V:[iconLabel]-vSpacing-[hourPicker]"
         self.labelConsDictionary["visualFormatIconLabelWidth"] = "H:[iconLabel(iconLabelWidth)]"
+        self.labelConsDictionary["visualFormatIconLabelHeight"] = "V:[iconLabel(iconLabelHeight)]"
+        self.labelConsDictionary["visualFormatTempLabelHeight"] = "V:[tempLabel(iconLabelHeight)]"
         self.labelConsDictionary["visualFormatHHourPicker"] = "H:|-hSpacing-[hourPicker]-hSpacing-|"
-        self.labelConsDictionary["visualFormatVHourPicker"] = "V:[hourPicker]-10-|"
         self.labelConsDictionary["visualFormatHourPicker"] = "V:[hourPicker(100)]"
         self.labelConsDictionary["visualFormatHSunriseTimeLabel"] = "H:[sunriseTimeIconLabel]-10-[sunriseTimeLabel]"
         self.labelConsDictionary["visualFormatVSunriseTimeLabel"] = "V:[hourPicker]-20-[sunriseTimeLabel]"
@@ -122,11 +121,11 @@ class MainView {
         self.labelConsDictionary["visualFormatHPoweredBy"] = "H:[poweredBy]-10-|"
         self.labelConsDictionary["visualFormatVPowereBy"] = "V:[poweredBy]-5-|"
        
-        self.metrics["vSpacing"] = 0
-        self.metrics["hSpacing"] = 0
-        self.metrics["mainViewHeight"] = heightConstraint
-        self.metrics["mainViewWidth"] = heightConstraint
-        self.metrics["iconLabelWidth"] = heightConstraint/2
+        self.metrics["vSpacing"] = 0 as AnyObject
+        self.metrics["hSpacing"] = 0 as AnyObject
+        self.metrics["mainViewHeight"] = heightConstraint as AnyObject
+        self.metrics["iconLabelWidth"] = UIScreen.main.bounds.size.width/2-20 as AnyObject
+        self.metrics["iconLabelHeight"] = heightConstraint/3 as AnyObject
         
         self.viewsDict["mainView"] = self.view
         self.viewsDict["tempLabel"] = self.tempLabel
@@ -152,23 +151,28 @@ class MainView {
         addSubviewsAndInstallConstraints(self.viewsDict)
     }
 
-    func addSubviewsAndInstallConstraints(subviews: Dictionary<String, AnyObject>) {
+    func addSubviewsAndInstallConstraints(_ subviews: Dictionary<String, AnyObject>) {
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.setNeedsUpdateConstraints()
         for subview in subviews {
             if subview.0 != "mainView" {
-                self.view.addSubview(subview.1 as! UIView)
+                let sView = subview.1 as! UIView
+                self.view.addSubview(sView)
+                sView.translatesAutoresizingMaskIntoConstraints = false
+                sView.setNeedsUpdateConstraints()
             }
         }
         for constraint in self.labelConsDictionary {
-            self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(constraint.1 as String, options: nil, metrics: self.metrics, views: self.viewsDict))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint.1 as String, options: NSLayoutFormatOptions(rawValue: 0), metrics: self.metrics, views: self.viewsDict))
         }
     }
     
     func installConstraints() {
-        self.visualFormatHMain = NSLayoutConstraint.constraintsWithVisualFormat(self.consDictionary["visualFormatHMain"]!, options: nil, metrics: self.metrics, views: self.viewsDict)
-        self.visualFormatVMain = NSLayoutConstraint.constraintsWithVisualFormat(self.consDictionary["visualFormatVMain"]!, options: nil, metrics: self.metrics, views: self.viewsDict)
-        self.visualFormatMainHeight = NSLayoutConstraint.constraintsWithVisualFormat(self.consDictionary["visualFormatMainHeight"]!, options: nil, metrics: self.metrics, views: self.viewsDict)
-        superView.addConstraints(visualFormatHMain)
-        superView.addConstraints(visualFormatVMain)
-        superView.addConstraints(visualFormatMainHeight)
+        self.visualFormatHMain = NSLayoutConstraint.constraints(withVisualFormat: self.consDictionary["visualFormatHMain"]!, options: NSLayoutFormatOptions(rawValue: 0), metrics: self.metrics, views: self.viewsDict)
+        self.visualFormatVMain = NSLayoutConstraint.constraints(withVisualFormat: self.consDictionary["visualFormatVMain"]!, options: NSLayoutFormatOptions(rawValue: 0), metrics: self.metrics, views: self.viewsDict)
+        self.visualFormatMainHeight = NSLayoutConstraint.constraints(withVisualFormat: self.consDictionary["visualFormatMainHeight"]!, options: NSLayoutFormatOptions(rawValue: 0), metrics: self.metrics, views: self.viewsDict)
+        superView.addConstraints(visualFormatHMain as! [NSLayoutConstraint])
+        superView.addConstraints(visualFormatVMain as! [NSLayoutConstraint])
+        superView.addConstraints(visualFormatMainHeight as! [NSLayoutConstraint])
     }
 }

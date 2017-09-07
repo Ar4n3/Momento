@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension Double {
-    func format(f: String) -> String {
+    func format(_ f: String) -> String {
         return String(format: "%\(f)f", self)
     }
 }
@@ -18,7 +18,7 @@ extension Double {
 struct Current {
     var currentLocation: String?
     var currentCoordenates: String?
-    var lastUpdate: NSDate?
+    var lastUpdate: Date?
     var temperature: Int
     var humidity: Double
     var precipProbability: Double
@@ -30,13 +30,17 @@ struct Current {
     var sunsetTime: String?
     var hourly: Array<NSDictionary>?
     
-    init(weatherDictionary: NSDictionary) {
-        let currentWeather = weatherDictionary["currently"] as! NSDictionary
-        let dailyWeather = weatherDictionary["daily"] as! NSDictionary
-        var dailyWeatherToday: NSDictionary!
+    init?(weatherDictionary: NSDictionary) {
+        guard let currentWeather = weatherDictionary["currently"] as? NSDictionary else {
+            return nil
+        }
+        guard let dailyWeather = weatherDictionary["daily"] as? NSDictionary else {
+            return nil
+        }
+        var dailyWeatherToday: Array<NSDictionary>!
         for dailyWeatherData in dailyWeather {
             if dailyWeatherData.key as! String == "data" {
-                dailyWeatherToday = dailyWeatherData.value[0] as! NSDictionary
+                dailyWeatherToday = dailyWeatherData.value as? Array<NSDictionary>
             }
         }
         
@@ -55,45 +59,45 @@ struct Current {
         let iconString = currentWeather["icon"] as! String
         icon = weatherIconFromString(iconString)
         
-        let sunriseTimeIntValue = dailyWeatherToday["sunriseTime"] as! Int
+        let sunriseTimeIntValue = dailyWeatherToday[0]["sunriseTime"] as! Int
         sunriseTime = dateStringFromUnixTime(sunriseTimeIntValue)
         
-        let sunsetTimeIntValue = dailyWeatherToday["sunsetTime"] as! Int
+        let sunsetTimeIntValue = dailyWeatherToday[0]["sunsetTime"] as! Int
         sunsetTime = dateStringFromUnixTime(sunsetTimeIntValue)
     }
     
-    func dateStringFromUnixTime(unixTime: Int) -> String {
-        let timeInSeconds = NSTimeInterval(unixTime)
-        let weatherDate = NSDate(timeIntervalSince1970: timeInSeconds)
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
-        return dateFormatter.stringFromDate(weatherDate)
+    func dateStringFromUnixTime(_ unixTime: Int) -> String {
+        let timeInSeconds = TimeInterval(unixTime)
+        let weatherDate = Date(timeIntervalSince1970: timeInSeconds)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: weatherDate)
     }
     
-    func weatherIconFromString(stringIcon: String) -> String {
+    func weatherIconFromString(_ stringIcon: String) -> String {
         var imageName: String
         
         switch stringIcon {
-//        case "clear-day":
-//            imageName = "ClearDay"
-//        case "clear-night":
-//            imageName = "ClearNight"
-//        case "rain":
-//            imageName = "Rainy"
-//        case "snow":
-//            imageName = "Snowy"
-//        case "sleet":
-//            imageName = "Sleet"
-//        case "wind":
-//            imageName = "Windy"
-//        case "fog":
-//            imageName = "Fog"
-//        case "cloudy":
-//            imageName = "Cloudy"
-//        case "partly-cloudy-day":
-//            imageName = "PartlyCloudyDay"
-//        case "partly-cloudy-night":
-//            imageName = "PartlyCloudyNight"
+        case "clear-day":
+            imageName = "ClearDay"
+        case "clear-night":
+            imageName = "ClearNight"
+        case "rain":
+            imageName = "Rainy"
+        case "snow":
+            imageName = "Snowy"
+        case "sleet":
+            imageName = "Sleet"
+        case "wind":
+            imageName = "Windy"
+        case "fog":
+            imageName = "Fog"
+        case "cloudy":
+            imageName = "Cloudy"
+        case "partly-cloudy-day":
+            imageName = "PartlyCloudyDay"
+        case "partly-cloudy-night":
+            imageName = "PartlyCloudyNight"
         default:
             imageName = "Default"
         }
@@ -101,15 +105,15 @@ struct Current {
         return imageName
     }
     
-    func getDataFromGivenHour(hour: NSTimeInterval) -> AnyObject {
+    func getDataFromGivenHour(_ hour: TimeInterval) -> AnyObject {
         var givenHourDictionary: NSDictionary?
         for hourDictionary in hourly! {
-            if (hourDictionary["time"] as! NSTimeInterval == hour) {
+            if (hourDictionary["time"] as! TimeInterval == hour) {
                 givenHourDictionary = hourDictionary
             }
         }
         if (givenHourDictionary == nil) {
-            return false
+            return false as AnyObject
         }
         
         return givenHourDictionary!

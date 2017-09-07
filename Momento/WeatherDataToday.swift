@@ -11,45 +11,47 @@ import CoreData
 
 class WeatherDataToday: NSManagedObject {
 
-    @NSManaged var jsonData: NSData
-    @NSManaged var dateStored: NSDate
+    @NSManaged var jsonData: Data
+    @NSManaged var dateStored: Date
     @NSManaged var coordString: String
     
-    class func saveInManagedObjectContext(moc: NSManagedObjectContext, lastUpdate: NSDate, data: NSData, coordString: String) {
-        var error: NSError?
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("WeatherDataToday", inManagedObjectContext: moc) as! WeatherDataToday
+    class func saveInManagedObjectContext(_ moc: NSManagedObjectContext, lastUpdate: Date, data: Data, coordString: String) {
+        var _: NSError?
+        let newItem = NSEntityDescription.insertNewObject(forEntityName: "WeatherDataToday", into: moc) as! WeatherDataToday
         newItem.dateStored = lastUpdate
         newItem.jsonData = data
         newItem.coordString = coordString
-        if moc.save(&error) {
-            println(error?.localizedDescription)
+        do {
+            try moc.save()
+        } catch {
+            let nserror = error as NSError
+            print(nserror.localizedDescription)
         }
     }
     
-    class func isEmpty(moc: NSManagedObjectContext) -> Bool {
-        let fetchRequest = NSFetchRequest(entityName: "WeatherDataToday")
-        if let result = moc.executeFetchRequest(fetchRequest, error: nil) as! [WeatherDataToday]? {
-            if result.isEmpty {
-                return true
-            } else {
-                return false
-            }
+    class func isEmpty(_ moc: NSManagedObjectContext) -> Bool {
+        let fetchRequest = NSFetchRequest<WeatherDataToday>(entityName: "WeatherDataToday")
+        let result = try? moc.fetch(fetchRequest)
+        if (result?.count)! > 0 {
+            return false
         } else {
             return true
         }
     }
     
-    class func fetchDataInManagedObjectContext(moc: NSManagedObjectContext) -> WeatherDataToday {
-        let fetchRequest = NSFetchRequest(entityName: "WeatherDataToday")
-        let result = moc.executeFetchRequest(fetchRequest, error: nil) as! [WeatherDataToday]
-        
-        return result[0] as WeatherDataToday
+    class func fetchDataInManagedObjectContext(_ moc: NSManagedObjectContext) -> WeatherDataToday? {
+        let fetchRequest = NSFetchRequest<WeatherDataToday>(entityName: "WeatherDataToday")
+        if let result = try? moc.fetch(fetchRequest) {
+            return result[0]
+        }
+        return nil
     }
     
-    class func updateInManagedObjectContext(moc: NSManagedObjectContext, lastUpdate: NSDate, data: NSData, coordString: String) {
-        let updateItem = WeatherDataToday.fetchDataInManagedObjectContext(moc)
-        updateItem.setValue(lastUpdate, forKey: "dateStored")
-        updateItem.setValue(data, forKey: "jsonData")
-        updateItem.setValue(coordString, forKey: "coordString")
+    class func updateInManagedObjectContext(_ moc: NSManagedObjectContext, lastUpdate: Date, data: Data, coordString: String) {
+        if let updateItem = WeatherDataToday.fetchDataInManagedObjectContext(moc) {
+            updateItem.setValue(lastUpdate, forKey: "dateStored")
+            updateItem.setValue(data, forKey: "jsonData")
+            updateItem.setValue(coordString, forKey: "coordString")
+        }
     }
 }

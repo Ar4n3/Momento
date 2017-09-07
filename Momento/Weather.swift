@@ -9,18 +9,18 @@
 import Foundation
 
 enum Weather: UniChar {
-    case Rainy = 0xe607
-    case ClearDay = 0xe600
-    case ClearNight = 0xe601
-    case Snowy = 0xe609
-    case Sleet = 0xe608
-    case Windy = 0xe60d
-    case Fog = 0xe605
-    case Cloudy = 0xe602
-    case PartlyCloudyDay = 0xe603
-    case PartlyCloudyNight = 0xe604
-    case Humidity = 0xe60c
-    case Sunrise = 0xe60a
-    case Sunset = 0xe60b
-    case Intensity = 0xe606
+    case rainy = 0xe607
+    case clearDay = 0xe600
+    case clearNight = 0xe601
+    case snowy = 0xe609
+    case sleet = 0xe608
+    case windy = 0xe60d
+    case fog = 0xe605
+    case cloudy = 0xe602
+    case partlyCloudyDay = 0xe603
+    case partlyCloudyNight = 0xe604
+    case humidity = 0xe60c
+    case sunrise = 0xe60a
+    case sunset = 0xe60b
+    case intensity = 0xe606
 }

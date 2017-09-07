@@ -13,7 +13,7 @@ import CoreLocation
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, CLLocationManagerDelegate {
     //MARK: - Vars and constants
-    private let apiKey = "1230094637b31f01c8bfaddb0587a4bc"
+    fileprivate let apiKey = "1230094637b31f01c8bfaddb0587a4bc"
     
     var mainView: MainView!
     let colorWheel = ColorWheel()
@@ -22,7 +22,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var newTodayWeatherStored: WeatherDataToday!
     var dateTime: DateTime!
     lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         } else {
@@ -33,14 +33,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     //MARK: -Override funcs
     override func loadView() {
-        let applicationFrame: CGRect = UIScreen.mainScreen().bounds
+        let applicationFrame: CGRect = UIScreen.main.bounds
         let contentView: UIView = UIView(frame: applicationFrame)
         contentView.backgroundColor = colorWheel.randomColor()
         
         view = contentView
         
-        var principalView = UIView()
-        var otherView = UIView()
+        let principalView = UIView()
+        let otherView = UIView()
         view.addSubview(principalView)
         view.addSubview(otherView)
         mainView = MainView(view: principalView, height: applicationFrame.height)
@@ -70,8 +70,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     //MARK: - Helper Funcs
     //MARK: Loading Data
     func setPickerData() {
-        for var i = dateTime.getHour(); i > 0; --i {
-            pickerData.removeAtIndex(i-1)
+        let hours = ((0 + 1)...dateTime.getHour()).reversed()
+        for i in hours {
+            pickerData.remove(at: i-1)
         }
     }
     
@@ -85,41 +86,41 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         mainView.tempLabel.text = "\(currentWeather.temperature)º"
         switch currentWeather.icon! {
         case "ClearDay":
-            mainView.iconLabel.text = String(format: "%C", Weather.ClearDay.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.clearDay.rawValue)
         case "ClearNight":
-            mainView.iconLabel.text = String(format: "%C", Weather.ClearNight.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.clearNight.rawValue)
         case "Rainy":
-            mainView.iconLabel.text = String(format: "%C", Weather.Rainy.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.rainy.rawValue)
         case "Snowy":
-            mainView.iconLabel.text = String(format: "%C", Weather.Snowy.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.snowy.rawValue)
         case "Sleet":
-            mainView.iconLabel.text = String(format: "%C", Weather.Sleet.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.sleet.rawValue)
         case "Windy":
-            mainView.iconLabel.text = String(format: "%C", Weather.Windy.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.windy.rawValue)
         case "Fog":
-            mainView.iconLabel.text = String(format: "%C", Weather.Fog.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.fog.rawValue)
         case "Cloudy":
-            mainView.iconLabel.text = String(format: "%C", Weather.Cloudy.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.cloudy.rawValue)
         case "PartlyCloudyDay":
-            mainView.iconLabel.text = String(format: "%C", Weather.PartlyCloudyDay.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.partlyCloudyDay.rawValue)
         case "PartlyCloudyNight":
-            mainView.iconLabel.text = String(format: "%C", Weather.PartlyCloudyNight.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.partlyCloudyNight.rawValue)
         default:
-            mainView.iconLabel.text = String(format: "%C", Weather.Cloudy.rawValue)
+            mainView.iconLabel.text = String(format: "%C", Weather.cloudy.rawValue)
         }
-        mainView.humidityIconLabel.text = String(format: "%C", Weather.Humidity.rawValue)
+        mainView.humidityIconLabel.text = String(format: "%C", Weather.humidity.rawValue)
         let humidityCalc = currentWeather.humidity * 100
         mainView.humidityLabel.text = "\(humidityCalc)%"
-        mainView.precProbIconLabel.text = String(format: "%C", Weather.Rainy.rawValue)
+        mainView.precProbIconLabel.text = String(format: "%C", Weather.rainy.rawValue)
         let precProbCalc = currentWeather.precipProbability * 100
         mainView.precProbLabel.text = "\(precProbCalc)%"
         mainView.summaryLabel.text = currentWeather.summary
         mainView.dateLabel.text = dateTime.displayDate()
 //        mainView.arrowRight.titleLabel.text = String(format: "%C", Arrow.Right.rawValue)
-        mainView.sunriseTimeIconLabel.text = String(format: "%C", Weather.Sunrise.rawValue)
-        mainView.sunsetTimeIconLabel.text = String(format: "%C", Weather.Sunset.rawValue)
-        mainView.windSpeedIconLabel.text = String(format: "%C", Weather.Windy.rawValue)
-        mainView.precipIntensityIconLabel.text = String(format: "%C", Weather.Intensity.rawValue)
+        mainView.sunriseTimeIconLabel.text = String(format: "%C", Weather.sunrise.rawValue)
+        mainView.sunsetTimeIconLabel.text = String(format: "%C", Weather.sunset.rawValue)
+        mainView.windSpeedIconLabel.text = String(format: "%C", Weather.windy.rawValue)
+        mainView.precipIntensityIconLabel.text = String(format: "%C", Weather.intensity.rawValue)
         mainView.sunriseTimeLabel.text = currentWeather.sunriseTime
         mainView.sunsetTimeLabel.text = currentWeather.sunsetTime
         mainView.windSpeedLabel.text = "\(currentWeather.windSpeed)"
@@ -129,62 +130,64 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     //MARK: Fetching Data
     func fetchDataFromCore() {
         newTodayWeatherStored = WeatherDataToday.fetchDataInManagedObjectContext(managedObjectContext!)
-        let jsonResult = NSJSONSerialization.JSONObjectWithData(newTodayWeatherStored.jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
-        currentWeather = Current(weatherDictionary: jsonResult)
-        currentWeather.currentCoordenates = newTodayWeatherStored.coordString
-        if CLLocationManager.locationServicesEnabled() {
-            self.getGeoLocation(self.locationManager)
+        do {
+            let jsonResult = try JSONSerialization.jsonObject(with: newTodayWeatherStored.jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
+            currentWeather = Current(weatherDictionary: jsonResult as! NSDictionary)
+            currentWeather.currentCoordenates = newTodayWeatherStored.coordString
+            if CLLocationManager.locationServicesEnabled() {
+                self.getGeoLocation(self.locationManager)
+            }
+            currentWeather.lastUpdate = newTodayWeatherStored.dateStored
+            
+            if dateTime.shouldGetDataFromAPI(currentWeather.lastUpdate!) {
+                getDataFromAPI(currentWeather.currentCoordenates!)
+            } else if dateTime.calculateDelayTime(currentWeather.lastUpdate!) > 0 {
+                getDataForDelay(dateTime.calculateDelayTime(currentWeather.lastUpdate!))
+            }
+            loadData()
+        } catch {
+            let nserror = error as NSError
+            print(nserror.localizedDescription)
         }
-        currentWeather.lastUpdate = newTodayWeatherStored.dateStored
-        
-        if dateTime.shouldGetDataFromAPI(currentWeather.lastUpdate!) {
-            getDataFromAPI(currentWeather.currentCoordenates!)
-        } else if dateTime.calculateDelayTime(currentWeather.lastUpdate!) > 0 {
-            getDataForDelay(dateTime.calculateDelayTime(currentWeather.lastUpdate!))
-        }
-        loadData()
     }
     
-    func getDataFromAPI(coorString: String) {
+    func getDataFromAPI(_ coorString: String) {
 
-        let baseURL = NSURL(string: "https://api.forecast.io/forecast/\(apiKey)/")
-        let lang = NSLocale.currentLocale()
+        let baseURL = URL(string: "https://api.forecast.io/forecast/\(apiKey)/")
+        let lang = Locale.current
         var langAndUnits: String
-        switch lang.localeIdentifier {
+        switch lang.identifier {
             case "es_ES":
                 langAndUnits = "?lang=es&units=auto"
         default:
             langAndUnits = "?units=auto"
         }
-        let forecastURL = NSURL(string: "\(coorString)\(langAndUnits)", relativeToURL: baseURL!)
+        let forecastURL = URL(string: "\(coorString)\(langAndUnits)", relativeTo: baseURL!)
         
-        let sharedSession = NSURLSession.sharedSession()
-        let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(forecastURL!, completionHandler: { (location: NSURL!, response: NSURLResponse!, error: NSError!) -> Void in
+        let sharedSession = URLSession.shared
+        let downloadTask: URLSessionDownloadTask = sharedSession.downloadTask(with: forecastURL!) { (location, response, error) in
             if error == nil {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var dataObject = NSData(contentsOfURL: location)
-                    var error: NSError?
-                    let weatherDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: &error) as! NSDictionary
-                    if error == nil {
-                        self.currentWeather = Current(weatherDictionary: weatherDictionary)
-                        self.currentWeather.currentCoordenates = coorString
-                        if CLLocationManager.locationServicesEnabled() {
-                            self.getGeoLocation(self.locationManager)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    if let dataObject = NSData.init(contentsOf: location!) {
+                        if let weatherDictionary = try? JSONSerialization.jsonObject(with: dataObject as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary {
+                            self.currentWeather = Current(weatherDictionary: weatherDictionary)
+                            self.currentWeather.currentCoordenates = coorString
+                            if CLLocationManager.locationServicesEnabled() {
+                                self.getGeoLocation(self.locationManager)
+                            }
+                            if WeatherDataToday.isEmpty(self.managedObjectContext!) {
+                                WeatherDataToday.saveInManagedObjectContext(self.managedObjectContext!, lastUpdate: self.dateTime.getDateForLastUpdate(), data: dataObject as Data, coordString: coorString)
+                            } else {
+                                WeatherDataToday.updateInManagedObjectContext(self.managedObjectContext!, lastUpdate: self.dateTime.getDateForLastUpdate(), data: dataObject as Data, coordString: coorString)
+                            }
+                            self.currentWeather.lastUpdate = self.dateTime.getDateForLastUpdate()
+                            self.loadData()
                         }
-                        if WeatherDataToday.isEmpty(self.managedObjectContext!) {
-                            WeatherDataToday.saveInManagedObjectContext(self.managedObjectContext!, lastUpdate: self.dateTime.getDateForLastUpdate(), data: dataObject!, coordString: coorString)
-                        } else {
-                            WeatherDataToday.updateInManagedObjectContext(self.managedObjectContext!, lastUpdate: self.dateTime.getDateForLastUpdate(), data: dataObject!, coordString: coorString)
-                        }
-                        self.currentWeather.lastUpdate = self.dateTime.getDateForLastUpdate()
-                        self.loadData()
-                    } else {
-                        println(error)
                     }
-                })
+                    } as @convention(block) () -> Void)
             }
 
-        })
+        }
         downloadTask.resume()
     }
     
@@ -194,42 +197,42 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         let authState = CLLocationManager.authorizationStatus()
-        if authState == CLAuthorizationStatus.NotDetermined {
+        if authState == CLAuthorizationStatus.notDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.Denied || status == CLAuthorizationStatus.Restricted {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.denied || status == CLAuthorizationStatus.restricted {
             if WeatherDataToday.isEmpty(managedObjectContext!) {
                 //Set coordenates to a certain location//default coordinates
                 let coorString = "37.331705,-122.030237"
                 //get data with default coordinates from API
                 getDataFromAPI(coorString)
             }
-            let alertLocation = UIAlertController(title: "Oh Oh!", message: NSLocalizedString("Without access to your location this information may be wrong", comment: "alertLocation message"), preferredStyle: .Alert)
-            let dissmissAction = UIAlertAction(title: NSLocalizedString("Dissmiss", comment: "dismissButton text"), style: .Cancel, handler: { (action) -> Void in
+            let alertLocation = UIAlertController(title: "Oh Oh!", message: NSLocalizedString("Without access to your location this information may be wrong", comment: "alertLocation message"), preferredStyle: .alert)
+            let dissmissAction = UIAlertAction(title: NSLocalizedString("Dissmiss", comment: "dismissButton text"), style: .cancel, handler: { (action) -> Void in
                 return
             })
-            let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: "settingsButton text"), style: .Default, handler: { (action) -> Void in
-                let settingsURL = NSURL(string: UIApplicationOpenSettingsURLString)
-                UIApplication.sharedApplication().openURL(settingsURL!)
+            let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: "settingsButton text"), style: .default, handler: { (action) -> Void in
+                let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
+                UIApplication.shared.openURL(settingsURL!)
             })
             alertLocation.addAction(dissmissAction)
             alertLocation.addAction(settingsAction)
-            self.presentViewController(alertLocation, animated: true, completion: { () -> Void in
+            self.present(alertLocation, animated: true, completion: { () -> Void in
                 return
             })
         }
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.AuthorizedAlways {
+        if status == CLAuthorizationStatus.authorizedWhenInUse || status == CLAuthorizationStatus.authorizedAlways {
             locationManager.startUpdatingLocation()
         }
         
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation: AnyObject = locations.last!
-        let locationAge: NSDate = newLocation.timestamp!
+        let locationAge: Date = newLocation.timestamp!
         let coorString = "\(locations.last!.coordinate.latitude),\(locations.last!.coordinate.longitude)"
         
         if locationAge.timeIntervalSinceNow > 10.0 {
@@ -244,47 +247,46 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println(error)
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
     
-    func getGeoLocation(manager: CLLocationManager!) {
+    func getGeoLocation(_ manager: CLLocationManager!) {
         //default coordinates
         let geoCoder = CLGeocoder()
-        var placemark: AnyObject
-        var error: NSError
-        geoCoder.reverseGeocodeLocation(manager.location, completionHandler: { (placemark, error) -> Void in
+        geoCoder.reverseGeocodeLocation(manager.location!, completionHandler: { (placemark, error) -> Void in
             if error != nil {
-                println("Error: \(error.localizedDescription)")
+                print("Error: \(String(describing: error?.localizedDescription))")
                 return
             }
-            if placemark.count > 0 {
-                let pm = placemark[0] as! CLPlacemark
-                self.currentWeather.currentLocation = "\(pm.locality), \(pm.country)"
-                self.mainView.locationLabel.text = self.currentWeather.currentLocation
+            if (placemark?.count)! > 0 {
+                if let pm = placemark?[0] {
+                    self.currentWeather.currentLocation = "\(pm.locality!), \(pm.country!)"
+                    self.mainView.locationLabel.text = self.currentWeather.currentLocation
+                }
             } else {
-                println("Error with data")
+                print("Error with data")
             }
         })
     }
     
     //MARK: - Delegates and data sources
     //MARK: Data Sources
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
-    func getDataForDelay(arg: Int) {
-        var delay: NSTimeInterval
-        var dateForDelay: NSDate
+    func getDataForDelay(_ arg: Int) {
+        var delay: TimeInterval
+        var dateForDelay: Date
         delay = Double(arg) * 3600.0
         
-        dateForDelay = currentWeather.lastUpdate!.dateByAddingTimeInterval(delay)
+        dateForDelay = currentWeather.lastUpdate!.addingTimeInterval(delay) as Date
         if let givenHourWeather = currentWeather.getDataFromGivenHour(round(dateForDelay.timeIntervalSince1970)) as? NSDictionary {
-            var newTemp = round(givenHourWeather["temperature"]as! Double)
+            let newTemp = round(givenHourWeather["temperature"]as! Double)
             currentWeather.temperature = Int(newTemp)
             currentWeather.icon = currentWeather.weatherIconFromString(String(givenHourWeather["icon"]! as! NSString))
             currentWeather.humidity = givenHourWeather["humidity"] as! Double
@@ -299,13 +301,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     //MARK: Delegates
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var attributedString: NSAttributedString!
-        attributedString = NSAttributedString(string: pickerData[row], attributes: [NSFontAttributeName:UIFont(name: "Roboto", size: 26.0)!,NSForegroundColorAttributeName:UIColor.lightTextColor()])
+        attributedString = NSAttributedString(string: pickerData[row], attributes: [NSFontAttributeName:UIFont(name: "Roboto", size: 26.0)!,NSForegroundColorAttributeName:UIColor.lightText])
         return attributedString
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row > 0 {
             getDataForDelay(row)
         } else {
@@ -313,21 +315,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30.0
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel = view as! UILabel!
         if view == nil {  //if no label there yet
             pickerLabel = UILabel()
         }
         let titleData = pickerData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Roboto", size: 26.0)!,NSForegroundColorAttributeName:UIColor.lightTextColor()])
-        pickerLabel!.textAlignment = .Center
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Roboto", size: 26.0)!,NSForegroundColorAttributeName:UIColor.lightText])
+        pickerLabel!.textAlignment = .center
         pickerLabel!.attributedText = myTitle
         
-        return pickerLabel
+        return pickerLabel!
     }
     
 }

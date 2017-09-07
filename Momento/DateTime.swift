@@ -9,42 +9,42 @@
 import Foundation
 
 class DateTime {
-    let date = NSDate()
-    let calendar = NSCalendar.currentCalendar()
+    let date = Date()
+    let calendar = Calendar.current
     
     func getHour() -> Int {
-        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
-        return components.hour
+        let components = calendar.component(Calendar.Component.hour, from: date)
+        return components
     }
     
-    func shouldGetDataFromAPI(lastUpdate: NSDate) -> Bool {
+    func shouldGetDataFromAPI(_ lastUpdate: Date) -> Bool {
         let theHour = self.getHour()
-        let toCompareDate = calendar.dateBySettingHour(theHour, minute: 0, second: 0, ofDate: lastUpdate, options: nil)
-        let fromCompareDate = calendar.dateBySettingHour(theHour, minute: 0, second: 0, ofDate: date, options: nil)
-        if fromCompareDate!.isEqualToDate(toCompareDate!) {
+        let toCompareDate = calendar.date(bySettingHour: theHour, minute: 0, second: 0, of: lastUpdate, matchingPolicy: Calendar.MatchingPolicy.strict, repeatedTimePolicy: Calendar.RepeatedTimePolicy.first, direction: Calendar.SearchDirection.forward)
+        let fromCompareDate = calendar.date(bySettingHour: theHour, minute: 0, second: 0, of: date, matchingPolicy: Calendar.MatchingPolicy.strict, repeatedTimePolicy: Calendar.RepeatedTimePolicy.first, direction: Calendar.SearchDirection.forward)
+        if fromCompareDate == toCompareDate {
             return false
         }
         return true
     }
     
-    func calculateDelayTime(lastUpdate: NSDate) -> Int {
-        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: lastUpdate)
+    func calculateDelayTime(_ lastUpdate: Date) -> Int {
+        let components = calendar.component(Calendar.Component.hour, from: lastUpdate)
         let theHour = self.getHour()
-        let lastUpdateHour = components.hour
+        let lastUpdateHour = components
         return theHour - lastUpdateHour
     }
     
-    func getDateForLastUpdate() -> NSDate {
-        return calendar.dateBySettingHour(self.getHour(), minute: 0, second: 0, ofDate: date, options: nil)!
+    func getDateForLastUpdate() -> Date {
+        return calendar.date(bySettingHour: self.getHour(), minute: 0, second: 0, of: date, matchingPolicy: Calendar.MatchingPolicy.strict, repeatedTimePolicy: Calendar.RepeatedTimePolicy.first, direction: Calendar.SearchDirection.forward)!
     }
     
     func displayDate() -> String {
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.locale = .currentLocale()
-        dateFormatter.timeZone = NSTimeZone()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = .current
+        dateFormatter.timeZone = TimeZone.init(secondsFromGMT: 0)
         dateFormatter.dateFormat = "dd/mm/yyyy"
         
-        return dateFormatter.stringFromDate(date)
+        return dateFormatter.string(from: date)
     }
     
 }
